@@ -3,7 +3,6 @@ int URTRIG = 5;                   // PWM trigger pin
 int indiceTempoDistancia = 18;
 int distancia = 0;
 int Frente = 1;
-
 int MotorEsq = 1;
 unsigned int Distance = 0;
 uint8_t EnPwmCmd[4] = {0x44, 0x22, 0xbb, 0x01};
@@ -41,7 +40,6 @@ void loop() {
     delay(100);
     distancia = PWM_Mode();
     Serial.println(distancia);
-
   }
 }
 void move(int motor, int speed, int direction) {
@@ -61,10 +59,10 @@ void move(int motor, int speed, int direction) {
     analogWrite(PWMA, speed);
   } 
 }
-void stop() {
-  //enable standby
-  digitalWrite(STBY, LOW);
-}
+//void stop() {
+//  //enable standby
+//  digitalWrite(STBY, LOW);
+//}
 void PWM_Mode_Setup() {
   pinMode(URTRIG, OUTPUT);              // A low pull on pin COMP/TRIG
   digitalWrite(URTRIG, HIGH);            // Set to HIGH
@@ -73,9 +71,14 @@ void PWM_Mode_Setup() {
     Serial.write(EnPwmCmd[i]);
   }
 }
+//Ao que parece é uma função para medir a distância percorrida:
+
 int PWM_Mode() {                  // a low pull on pin COMP/TRIG triggering a sensor reading
   digitalWrite(URTRIG, LOW);
   digitalWrite(URTRIG, HIGH);           // reading Pin PWM will output pulses
+  //Captura a duração de um pulso em um pino (que pode ser HIGH ou LOW). Por exemplo, 
+  //se o valor HIGH é passado para a função, a função pulseIn() espera o pino ir para do estado 
+  //'LOW' para HIGH, começa a temporizar, então espera o pino ir para o estado LOW e para de temporizar
   unsigned long DistanceMeasured = pulseIn(URPWM, LOW);
   if (DistanceMeasured == 50000) {         // the reading is invalid.
     Serial.print("Invalid");

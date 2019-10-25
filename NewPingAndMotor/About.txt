@@ -1,0 +1,1 @@
+Projeto usando um ultrassônico com a biblioteca newPing e ("ao mesmo tempo") controlando um motor através a ponte H/Driver TB6612FNG
