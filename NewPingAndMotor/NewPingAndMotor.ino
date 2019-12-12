@@ -29,6 +29,10 @@ void setup(void)
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);
   move(MotorEsq, 255, Frente);
+  //se eu quisesse limitar pela Lib
+  double Min = 0;
+  double Max = 256
+SetOutputLimits(double Min, double Max);
   delay(1500);
 }
  

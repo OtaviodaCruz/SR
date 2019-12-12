@@ -10,8 +10,8 @@ float input,output, setPoint, temporaria;
 double erroAcumulado, erroTaxa;
 
 
-const unsigned int TRIG_PIN=16;
-const unsigned int ECHO_PIN=5;
+const unsigned int TRIG_PIN=5;
+const unsigned int ECHO_PIN=4;
 const unsigned int BAUD_RATE=115200;
 const unsigned int temp = 24;
 const unsigned int umi = 63;
